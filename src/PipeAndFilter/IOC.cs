@@ -11,6 +11,8 @@ using PipeAndFIlter.Domain.Converters.Interfaces;
 using PipeAndFIlter.Domain.Interfaces;
 using PipeAndFIlter.Domain.Pipelines.Director;
 using PipeAndFIlter.Domain.Pipelines.Director.Interfaces;
+using PipeAndFIlter.Domain.Pipelines.Factory;
+using PipeAndFIlter.Domain.Pipelines.Factory.Interfaces;
 using PipeAndFIlter.Domain.Pipelines.Helpers;
 using PipeAndFIlter.Domain.Pipelines.Interfaces;
 using System;
@@ -40,6 +42,7 @@ namespace PipeAndFilter
             {
                 services.AddScoped(typeof(IPipeline<PipelineData, PipelineResult>), pipeline);
             }
+            services.AddTransient<IPipelineFactory, PipelineFactory>();
         }
 
         private static void RegisterConverters(IServiceCollection services)

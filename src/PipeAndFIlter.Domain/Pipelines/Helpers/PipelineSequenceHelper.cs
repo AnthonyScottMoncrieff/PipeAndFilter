@@ -4,6 +4,7 @@
     {
         public static object[] FulfilmentPipelines { get; } =
         {
+            typeof(PersonPipeline)
         };
     }
 }

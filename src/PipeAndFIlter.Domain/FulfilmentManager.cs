@@ -5,7 +5,6 @@ using PipeAndFIlter.Domain.Converters.Interfaces;
 using PipeAndFIlter.Domain.Interfaces;
 using PipeAndFIlter.Domain.Pipelines.Director.Interfaces;
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace PipeAndFIlter.Domain
@@ -28,9 +27,30 @@ namespace PipeAndFIlter.Domain
             _logger.AddMessageDetail("Beginning order processing");
             var pipelineData = _orderDataConverter.Convert(order);
             var pipelineResult = new PipelineResult();
-
-            await _pipelineDirector.Do(pipelineData, pipelineResult);
+            try
+            {
+                await _pipelineDirector.Do(pipelineData, pipelineResult);
+            }
+            catch(Exception ex)
+            {
+                _logger.AddErrorDetail(ex.Message);
+                _logger.SubmitException(ex);
+                await HandlePipelineException(pipelineData, pipelineResult);
+            }
             return pipelineResult;
+        }
+
+        private async Task HandlePipelineException(PipelineData pipelineData, PipelineResult pipelineResult)
+        {
+            try
+            {
+                await _pipelineDirector.Undo(pipelineData, pipelineResult);
+            }
+            catch (Exception ex)
+            {
+                _logger.AddErrorDetail(ex.Message);
+                _logger.SubmitException(ex);
+            }
         }
     }
 }

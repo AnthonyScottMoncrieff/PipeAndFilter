@@ -1,5 +1,7 @@
-﻿using PipeAndFilter.Models;
+﻿using PipeAndFilter.Logging.Interfaces;
+using PipeAndFilter.Models;
 using PipeAndFIlter.Domain.Pipelines.Director.Interfaces;
+using PipeAndFIlter.Domain.Pipelines.Factory.Interfaces;
 using PipeAndFIlter.Domain.Pipelines.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -12,8 +14,15 @@ namespace PipeAndFIlter.Domain.Pipelines.Director
         private IEnumerable<IPipeline<PipelineData, PipelineResult>> _stepsToProcess;
 
         private readonly Stack<IPipeline<PipelineData, PipelineResult>> _processedSteps;
+        private readonly ILogger _logger;
 
         public string Name => nameof(FulfilmentDirectorPipeline);
+
+        public FulfilmentDirectorPipeline(ILogger logger, IPipelineFactory pipelineFactory)
+        {
+            _logger = logger;
+            _stepsToProcess = pipelineFactory.GetOrderedPipelines();
+        }
 
         public async Task Do(PipelineData pipelineData, PipelineResult pipelineResult)
         {

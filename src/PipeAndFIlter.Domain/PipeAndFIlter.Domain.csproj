@@ -5,11 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PipeAndFilter.Logging\PipeAndFilter.Logging.csproj" />
     <ProjectReference Include="..\PipeAndFilter.Models\PipeAndFilter.Models.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Pipelines\Director\Interfaces\" />
   </ItemGroup>
 
 </Project>

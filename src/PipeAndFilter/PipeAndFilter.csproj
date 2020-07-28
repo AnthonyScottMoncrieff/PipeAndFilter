@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Exceptionless.AspNetCore" Version="4.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\PipeAndFIlter.Domain\PipeAndFIlter.Domain.csproj" />
+    <ProjectReference Include="..\PipeAndFilter.Logging\PipeAndFilter.Logging.csproj" />
     <ProjectReference Include="..\PipeAndFilter.Models\PipeAndFilter.Models.csproj" />
   </ItemGroup>
 
