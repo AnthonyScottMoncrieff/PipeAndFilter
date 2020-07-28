@@ -33,11 +33,20 @@ namespace PipeAndFIlter.Domain
             }
             catch(Exception ex)
             {
+                AssignException(pipelineResult, ex);
                 _logger.AddErrorDetail(ex.Message);
                 _logger.SubmitException(ex);
                 await HandlePipelineException(pipelineData, pipelineResult);
             }
             return pipelineResult;
+        }
+
+        private static void AssignException(PipelineResult pipelineResult, Exception ex)
+        {
+            pipelineResult.Errors.Add(new ResultCode
+            {
+                Message = ex.Message
+            });
         }
 
         private async Task HandlePipelineException(PipelineData pipelineData, PipelineResult pipelineResult)
@@ -48,6 +57,7 @@ namespace PipeAndFIlter.Domain
             }
             catch (Exception ex)
             {
+                AssignException(pipelineResult, ex);
                 _logger.AddErrorDetail(ex.Message);
                 _logger.SubmitException(ex);
             }

@@ -26,12 +26,25 @@ namespace PipeAndFIlter.Domain.Pipelines.Director
 
         public async Task Do(PipelineData pipelineData, PipelineResult pipelineResult)
         {
-            throw new NotImplementedException();
+            FilterStepsToProcess(pipelineData);
+
+            foreach(var step in _stepsToProcess)
+            {
+                _logger.AddMessageDetail($"Processing step: {step.Name}");
+                _processedSteps.Push(step);
+                await step.Do(pipelineData, pipelineResult);
+                _logger.AddMessageDetail($"Finished Processing step: {step.Name}");
+            }
         }
 
         public async Task Undo(PipelineData pipelineData, PipelineResult pipelineResult)
         {
             throw new NotImplementedException();
+        }
+
+        private void FilterStepsToProcess(PipelineData pipelineData)
+        {
+            //Add conditions to filter steps
         }
     }
 }
