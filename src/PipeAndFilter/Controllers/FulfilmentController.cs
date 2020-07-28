@@ -19,7 +19,7 @@ namespace PipeAndFilter.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] RecievedOrder recievedOrder)
         {
-            var result = _fulfilmentManager.Manage(recievedOrder);
+            var result = await _fulfilmentManager.Manage(recievedOrder);
             return Ok(result);
         }
     }

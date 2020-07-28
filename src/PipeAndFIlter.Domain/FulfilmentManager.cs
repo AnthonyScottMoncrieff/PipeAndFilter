@@ -31,7 +31,7 @@ namespace PipeAndFIlter.Domain
             {
                 await _pipelineDirector.Do(pipelineData, pipelineResult);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 AssignException(pipelineResult, ex);
                 _logger.AddErrorDetail(ex.Message);

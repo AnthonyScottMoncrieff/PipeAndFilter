@@ -1,10 +1,11 @@
-﻿using PipeAndFilter.Logging.Interfaces;
+﻿using Exceptionless.Logging;
+using PipeAndFilter.Logging.Interfaces;
 using PipeAndFilter.Models;
 using PipeAndFIlter.Domain.Pipelines.Director.Interfaces;
 using PipeAndFIlter.Domain.Pipelines.Factory.Interfaces;
 using PipeAndFIlter.Domain.Pipelines.Interfaces;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PipeAndFIlter.Domain.Pipelines.Director
@@ -28,7 +29,7 @@ namespace PipeAndFIlter.Domain.Pipelines.Director
         {
             FilterStepsToProcess(pipelineData);
 
-            foreach(var step in _stepsToProcess)
+            foreach (var step in _stepsToProcess)
             {
                 _logger.AddMessageDetail($"Processing step: {step.Name}");
                 _processedSteps.Push(step);
@@ -39,7 +40,17 @@ namespace PipeAndFIlter.Domain.Pipelines.Director
 
         public async Task Undo(PipelineData pipelineData, PipelineResult pipelineResult)
         {
-            throw new NotImplementedException();
+            _logger.SetLogLevel(LogLevel.Error);
+            while (_processedSteps.Any())
+            {
+                var step = _processedSteps.Pop();
+
+                _logger.AddMessageDetail($"Rolling back step: {step.Name}");
+
+                await step.Undo(pipelineData, pipelineResult);
+
+                _logger.AddMessageDetail($"Successfully rolled back step: {step.Name}");
+            }
         }
 
         private void FilterStepsToProcess(PipelineData pipelineData)

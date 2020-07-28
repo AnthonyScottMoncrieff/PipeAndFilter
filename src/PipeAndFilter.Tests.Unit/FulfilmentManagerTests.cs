@@ -1,15 +1,14 @@
-﻿using Moq;
+﻿using AutoFixture;
+using Moq;
 using NUnit.Framework;
+using PipeAndFilter.Logging.Interfaces;
 using PipeAndFilter.Models;
 using PipeAndFilter.Models.Recieved;
 using PipeAndFIlter.Domain;
 using PipeAndFIlter.Domain.Converters.Interfaces;
-using PipeAndFilter.Logging.Interfaces;
 using PipeAndFIlter.Domain.Pipelines.Director.Interfaces;
-using AutoFixture;
-using System.Threading.Tasks;
 using System;
-using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 
 namespace PipeAndFilter.Tests.Unit
 {

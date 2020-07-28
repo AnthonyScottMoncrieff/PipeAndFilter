@@ -9,12 +9,12 @@ namespace PipeAndFIlter.Domain.Pipelines
     {
         public string Name => nameof(PersonPipeline);
 
-        public Task Do(PipelineData pipelineData, PipelineResult pipelineResult)
+        public async Task Do(PipelineData pipelineData, PipelineResult pipelineResult)
         {
             throw new NotImplementedException();
         }
 
-        public Task Undo(PipelineData pipelineData, PipelineResult pipelineResult)
+        public async Task Undo(PipelineData pipelineData, PipelineResult pipelineResult)
         {
             throw new NotImplementedException();
         }

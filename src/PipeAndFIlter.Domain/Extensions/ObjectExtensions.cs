@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PipeAndFIlter.Domain.Extensions
+﻿namespace PipeAndFIlter.Domain.Extensions
 {
     public static class ObjectExtensions
     {

@@ -8,7 +8,6 @@ using PipeAndFIlter.Domain.Pipelines.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace PipeAndFIlter.Domain.Pipelines.Factory
 {
