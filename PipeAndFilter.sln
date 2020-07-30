@@ -7,17 +7,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PipeAndFilter", "src\PipeAn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PipeAndFIlter.Domain", "src\PipeAndFIlter.Domain\PipeAndFIlter.Domain.csproj", "{6E99EAD6-635D-4334-9E08-2B530CAE1AA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PipeAndFilter.Models", "src\PipeAndFilter.Models\PipeAndFilter.Models.csproj", "{E8622A7E-0140-4B48-958E-0628A22C4F6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PipeAndFilter.Models", "src\PipeAndFilter.Models\PipeAndFilter.Models.csproj", "{E8622A7E-0140-4B48-958E-0628A22C4F6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PipeAndFilter.Data", "src\PipeAndFilter.Data\PipeAndFilter.Data.csproj", "{39A672C1-DF14-4900-811B-75B26DD49FFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PipeAndFilter.Data", "src\PipeAndFilter.Data\PipeAndFilter.Data.csproj", "{39A672C1-DF14-4900-811B-75B26DD49FFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PipeAndFilter.Logging", "src\PipeAndFilter.Logging\PipeAndFilter.Logging.csproj", "{6C4BD7B5-9BB3-43D5-8AD8-02B302A39CBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PipeAndFilter.Logging", "src\PipeAndFilter.Logging\PipeAndFilter.Logging.csproj", "{6C4BD7B5-9BB3-43D5-8AD8-02B302A39CBB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{012450F4-8482-4CDC-BE8F-4A83BCEC0A8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PipeAndFilter.Tests.Unit", "src\PipeAndFilter.Tests.Unit\PipeAndFilter.Tests.Unit.csproj", "{59AC3667-EE55-4D85-99DC-5F129AB6245E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PipeAndFilter.Tests.Unit", "src\PipeAndFilter.Tests.Unit\PipeAndFilter.Tests.Unit.csproj", "{59AC3667-EE55-4D85-99DC-5F129AB6245E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PipeAndFilter.Tests.Integration", "src\PipeAndFilter.Tests.Integration\PipeAndFilter.Tests.Integration.csproj", "{0829BDED-BF6E-40A1-AEDA-2299969FE5B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PipeAndFilter.Tests.Integration", "src\PipeAndFilter.Tests.Integration\PipeAndFilter.Tests.Integration.csproj", "{0829BDED-BF6E-40A1-AEDA-2299969FE5B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PipeAndFilter.Tests.Helpers", "src\PipeAndFilter.Tests.Helpers\PipeAndFilter.Tests.Helpers.csproj", "{AFBEC67C-11B6-476F-A461-1BFC069F4D0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{0829BDED-BF6E-40A1-AEDA-2299969FE5B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0829BDED-BF6E-40A1-AEDA-2299969FE5B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0829BDED-BF6E-40A1-AEDA-2299969FE5B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFBEC67C-11B6-476F-A461-1BFC069F4D0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFBEC67C-11B6-476F-A461-1BFC069F4D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFBEC67C-11B6-476F-A461-1BFC069F4D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFBEC67C-11B6-476F-A461-1BFC069F4D0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{59AC3667-EE55-4D85-99DC-5F129AB6245E} = {012450F4-8482-4CDC-BE8F-4A83BCEC0A8A}
 		{0829BDED-BF6E-40A1-AEDA-2299969FE5B1} = {012450F4-8482-4CDC-BE8F-4A83BCEC0A8A}
+		{AFBEC67C-11B6-476F-A461-1BFC069F4D0D} = {012450F4-8482-4CDC-BE8F-4A83BCEC0A8A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7E13ED5E-7AB9-4174-87BD-E1A2756FDCB8}

@@ -4,12 +4,12 @@
     {
         public static T GetValue<T>(this object obj, string propertyName)
         {
-            var foo = default(T);
+            var propValue = default(T);
             if (obj != null)
             {
-                foo = (T)obj.GetType().GetProperty(propertyName)?.GetValue(obj, null);
+                propValue = (T)obj.GetType().GetProperty(propertyName)?.GetValue(obj, null);
             }
-            return foo;
+            return propValue;
         }
     }
 }

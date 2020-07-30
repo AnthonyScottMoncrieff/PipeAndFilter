@@ -23,6 +23,7 @@ namespace PipeAndFIlter.Domain.Pipelines.Director
         {
             _logger = logger;
             _stepsToProcess = pipelineFactory.GetOrderedPipelines();
+            _processedSteps = new Stack<IPipeline<PipelineData, PipelineResult>>();
         }
 
         public async Task Do(PipelineData pipelineData, PipelineResult pipelineResult)

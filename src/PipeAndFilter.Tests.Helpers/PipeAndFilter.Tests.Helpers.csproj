@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PipeAndFIlter.Domain\PipeAndFIlter.Domain.csproj" />
+    <ProjectReference Include="..\PipeAndFilter.Models\PipeAndFilter.Models.csproj" />
+  </ItemGroup>
+
+</Project>

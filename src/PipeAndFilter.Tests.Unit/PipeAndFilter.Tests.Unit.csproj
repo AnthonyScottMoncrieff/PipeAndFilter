@@ -16,6 +16,7 @@
     <ProjectReference Include="..\PipeAndFIlter.Domain\PipeAndFIlter.Domain.csproj" />
     <ProjectReference Include="..\PipeAndFilter.Logging\PipeAndFilter.Logging.csproj" />
     <ProjectReference Include="..\PipeAndFilter.Models\PipeAndFilter.Models.csproj" />
+    <ProjectReference Include="..\PipeAndFilter.Tests.Helpers\PipeAndFilter.Tests.Helpers.csproj" />
   </ItemGroup>
 
 </Project>
