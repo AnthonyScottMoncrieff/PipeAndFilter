@@ -1,10 +1,7 @@
 ﻿using NUnit.Framework;
 using PipeAndFilter.Tests.Helpers.TestEntities;
 using PipeAndFIlter.Domain.Extensions;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace PipeAndFilter.Tests.Unit
 {

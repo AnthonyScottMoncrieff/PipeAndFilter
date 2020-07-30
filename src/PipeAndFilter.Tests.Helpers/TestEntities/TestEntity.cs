@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PipeAndFilter.Tests.Helpers.TestEntities
+﻿namespace PipeAndFilter.Tests.Helpers.TestEntities
 {
     public class TestEntity
     {

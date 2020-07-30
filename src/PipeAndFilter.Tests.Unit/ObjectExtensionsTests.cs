@@ -1,9 +1,7 @@
 ﻿using NUnit.Framework;
+using PipeAndFilter.Tests.Helpers.TestEntities;
 using PipeAndFIlter.Domain.Extensions;
-using PipeAndFIlter.Domain.Pipelines;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel.DataAnnotations;
 
 namespace PipeAndFilter.Tests.Unit
 {
@@ -14,13 +12,14 @@ namespace PipeAndFilter.Tests.Unit
         public void GetValue_Should_Successfully_Get_Object_Value()
         {
             //Arrange
-            var personPipeline = new PersonPipeline();
+            var testEntity = new TestEntity() { Id = 1, Name = "test" };
+            var castedEntity = (object)testEntity;
 
             //Act
-            var name = personPipeline.GetValue<string>("Name");
+            var id = castedEntity.GetValue<int>("Id");
 
             //Assert
-            Assert.AreEqual(name, personPipeline.Name);
+            Assert.AreEqual(id, testEntity.Id);
         }
     }
 }

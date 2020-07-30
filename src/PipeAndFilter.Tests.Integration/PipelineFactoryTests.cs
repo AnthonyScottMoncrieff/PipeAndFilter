@@ -1,15 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
-using PipeAndFilter.Models;
-using PipeAndFIlter.Domain.Pipelines;
-using PipeAndFIlter.Domain.Pipelines.Interfaces;
-using System;
-using System.Collections.Generic;
 using PipeAndFilter.Logging.Interfaces;
+using PipeAndFilter.Tests.Helpers;
+using PipeAndFIlter.Domain.Pipelines;
 using PipeAndFIlter.Domain.Pipelines.Factory;
 using System.Linq;
-using PipeAndFilter.Tests.Helpers;
 
 namespace PipeAndFilter.Tests.Integration
 {
