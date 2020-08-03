@@ -3,6 +3,7 @@ using PipeAndFilter.Logging.Interfaces;
 using PipeAndFilter.Models;
 using PipeAndFIlter.Domain.Pipelines.Director.Interfaces;
 using PipeAndFIlter.Domain.Pipelines.Factory.Interfaces;
+using PipeAndFIlter.Domain.Pipelines.Filter.Interfaces;
 using PipeAndFIlter.Domain.Pipelines.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +17,14 @@ namespace PipeAndFIlter.Domain.Pipelines.Director
 
         private readonly Stack<IPipeline<PipelineData, PipelineResult>> _processedSteps;
         private readonly ILogger _logger;
+        private readonly IFulfilmentPipelinesFilter _fulfilmentPipelinesFilter;
 
         public string Name => nameof(FulfilmentDirectorPipeline);
 
-        public FulfilmentDirectorPipeline(ILogger logger, IPipelineFactory pipelineFactory)
+        public FulfilmentDirectorPipeline(ILogger logger, IPipelineFactory pipelineFactory, IFulfilmentPipelinesFilter fulfilmentPipelinesFilter)
         {
             _logger = logger;
+            _fulfilmentPipelinesFilter = fulfilmentPipelinesFilter;
             _stepsToProcess = pipelineFactory.GetOrderedPipelines();
             _processedSteps = new Stack<IPipeline<PipelineData, PipelineResult>>();
         }
@@ -56,7 +59,10 @@ namespace PipeAndFIlter.Domain.Pipelines.Director
 
         private void FilterStepsToProcess(PipelineData pipelineData)
         {
-            //Add conditions to filter steps
+            _stepsToProcess = _fulfilmentPipelinesFilter
+                .CreateFilter(_stepsToProcess)
+                .WhenPersonExists(() => pipelineData.Person.PersonId != default)
+                .Filter();
         }
     }
 }
