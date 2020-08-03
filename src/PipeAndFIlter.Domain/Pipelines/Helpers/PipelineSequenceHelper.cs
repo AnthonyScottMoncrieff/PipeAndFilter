@@ -5,7 +5,8 @@
         public static object[] FulfilmentPipelines { get; } =
         {
             typeof(DuplicatePersonCheckerPipeline),
-            typeof(PersonPipeline)
+            typeof(PersonPipeline),
+            typeof(AddressPipeline)
         };
     }
 }

@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using PipeAndFilter.Tests.Helpers.TestEntities;
 using PipeAndFIlter.Domain.Extensions;
-using System.ComponentModel.DataAnnotations;
 
 namespace PipeAndFilter.Tests.Unit
 {
