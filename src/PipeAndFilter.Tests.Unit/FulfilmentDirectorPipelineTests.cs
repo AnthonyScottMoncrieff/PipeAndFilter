@@ -5,6 +5,8 @@ using PipeAndFilter.Logging.Interfaces;
 using PipeAndFilter.Models;
 using PipeAndFIlter.Domain.Pipelines.Director;
 using PipeAndFIlter.Domain.Pipelines.Factory.Interfaces;
+using PipeAndFIlter.Domain.Pipelines.Filter;
+using PipeAndFIlter.Domain.Pipelines.Filter.Interfaces;
 using PipeAndFIlter.Domain.Pipelines.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -17,6 +19,7 @@ namespace PipeAndFilter.Tests.Unit
     {
         private PipelineData _pipelineData;
         private PipelineResult _pipelineResult;
+        private Mock<IFulfilmentPipelinesFilter> _filter;
         private Mock<IPipeline<PipelineData, PipelineResult>> _pipeline1Mock;
         private Mock<IPipeline<PipelineData, PipelineResult>> _pipeline2Mock;
         private Mock<IPipeline<PipelineData, PipelineResult>> _pipeline3Mock;
@@ -35,6 +38,7 @@ namespace PipeAndFilter.Tests.Unit
             _fixture = new Fixture();
             _pipelineData = _fixture.Create<PipelineData>();
             _pipelineResult = new PipelineResult();
+            _filter = new Mock<IFulfilmentPipelinesFilter>();
 
             _pipeline1Mock = new Mock<IPipeline<PipelineData, PipelineResult>>();
             _pipeline1Mock.Setup(x => x.Name).Returns("Step 1");
@@ -52,7 +56,10 @@ namespace PipeAndFilter.Tests.Unit
         private void GivenFulfilmentPipeline(IEnumerable<IPipeline<PipelineData, PipelineResult>> pipelines)
         {
             _pipelineSectorFactory.Setup(x => x.GetOrderedPipelines()).Returns(pipelines);
-            _sut = new FulfilmentDirectorPipeline(_loggerMock.Object, _pipelineSectorFactory.Object);
+            _filter.Setup(x => x.CreateFilter(It.IsAny<IEnumerable<IPipeline<PipelineData, PipelineResult>>>())).Returns(_filter.Object);
+            _filter.Setup(x => x.WhenPersonExists(It.IsAny<Func<bool>>())).Returns(_filter.Object);
+            _filter.Setup(x => x.Filter()).Returns(pipelines);
+            _sut = new FulfilmentDirectorPipeline(_loggerMock.Object, _pipelineSectorFactory.Object, _filter.Object);
         }
 
         [Test]

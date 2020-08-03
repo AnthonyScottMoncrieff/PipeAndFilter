@@ -8,9 +8,9 @@ namespace PipeAndFIlter.Domain.Pipelines.Filter.Interfaces
 {
     public interface IFulfilmentPipelinesFilter
     {
-        FulfilmentPipelinesFilter CreateFilter(IEnumerable<IPipeline<PipelineData, PipelineResult>> steps);
+        IFulfilmentPipelinesFilter CreateFilter(IEnumerable<IPipeline<PipelineData, PipelineResult>> steps);
 
-        FulfilmentPipelinesFilter WhenPersonExists(Func<bool> FilterCondition);
+        IFulfilmentPipelinesFilter WhenPersonExists(Func<bool> FilterCondition);
 
         IEnumerable<IPipeline<PipelineData, PipelineResult>> Filter();
     }

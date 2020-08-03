@@ -22,7 +22,7 @@ namespace PipeAndFIlter.Domain.Pipelines.Filter
             _steps = steps;
         }
 
-        public FulfilmentPipelinesFilter CreateFilter(IEnumerable<IPipeline<PipelineData, PipelineResult>> steps)
+        public IFulfilmentPipelinesFilter CreateFilter(IEnumerable<IPipeline<PipelineData, PipelineResult>> steps)
         {
             return new FulfilmentPipelinesFilter(steps);
         }
@@ -32,7 +32,7 @@ namespace PipeAndFIlter.Domain.Pipelines.Filter
             return _steps;
         }
 
-        public FulfilmentPipelinesFilter WhenPersonExists(Func<bool> filterCondition)
+        public IFulfilmentPipelinesFilter WhenPersonExists(Func<bool> filterCondition)
         {
             if (filterCondition())
                 _steps = _steps.Where(x => !StepsToExclude.Contains(x.Name));
