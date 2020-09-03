@@ -55,7 +55,7 @@ namespace PipeAndFilter.Tests.Unit
         private void GivenFulfilmentPipeline(IEnumerable<IPipeline<PipelineData, PipelineResult>> pipelines)
         {
             _pipelineSectorFactory.Setup(x => x.GetOrderedPipelines()).Returns(pipelines);
-            _filter.Setup(x => x.CreateFilter(It.IsAny<IEnumerable<IPipeline<PipelineData, PipelineResult>>>())).Returns(_filter.Object);
+            _filter.Setup(x => x.PopulateSteps(It.IsAny<IEnumerable<IPipeline<PipelineData, PipelineResult>>>())).Returns(_filter.Object);
             _filter.Setup(x => x.WhenPersonExists(It.IsAny<Func<bool>>())).Returns(_filter.Object);
             _filter.Setup(x => x.Filter()).Returns(pipelines);
             _sut = new FulfilmentDirectorPipeline(_loggerMock.Object, _pipelineSectorFactory.Object, _filter.Object);

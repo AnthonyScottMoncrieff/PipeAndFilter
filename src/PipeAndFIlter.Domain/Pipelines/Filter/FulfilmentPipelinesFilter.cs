@@ -17,14 +17,10 @@ namespace PipeAndFIlter.Domain.Pipelines.Filter
             nameof(AddressPipeline)
         };
 
-        private FulfilmentPipelinesFilter(IEnumerable<IPipeline<PipelineData, PipelineResult>> steps)
+        public IFulfilmentPipelinesFilter PopulateSteps(IEnumerable<IPipeline<PipelineData, PipelineResult>> steps)
         {
             _steps = steps;
-        }
-
-        public static IFulfilmentPipelinesFilter CreateFilter(IEnumerable<IPipeline<PipelineData, PipelineResult>> steps)
-        {
-            return new FulfilmentPipelinesFilter(steps);
+            return this;
         }
 
         public IEnumerable<IPipeline<PipelineData, PipelineResult>> Filter()
