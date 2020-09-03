@@ -2,7 +2,6 @@
 using PipeAndFIlter.Domain.Pipelines.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace PipeAndFIlter.Domain.Pipelines.Filter.Interfaces
 {

@@ -4,13 +4,13 @@ using PipeAndFIlter.Domain.Pipelines.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace PipeAndFIlter.Domain.Pipelines.Filter
 {
     public class FulfilmentPipelinesFilter : IFulfilmentPipelinesFilter
     {
         private IEnumerable<IPipeline<PipelineData, PipelineResult>> _steps;
+
         private static readonly List<string> StepsToExclude = new List<string>
         {
             nameof(PersonPipeline),
@@ -22,7 +22,7 @@ namespace PipeAndFIlter.Domain.Pipelines.Filter
             _steps = steps;
         }
 
-        public IFulfilmentPipelinesFilter CreateFilter(IEnumerable<IPipeline<PipelineData, PipelineResult>> steps)
+        public static IFulfilmentPipelinesFilter CreateFilter(IEnumerable<IPipeline<PipelineData, PipelineResult>> steps)
         {
             return new FulfilmentPipelinesFilter(steps);
         }

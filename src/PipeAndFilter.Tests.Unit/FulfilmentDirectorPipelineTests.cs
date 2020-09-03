@@ -5,7 +5,6 @@ using PipeAndFilter.Logging.Interfaces;
 using PipeAndFilter.Models;
 using PipeAndFIlter.Domain.Pipelines.Director;
 using PipeAndFIlter.Domain.Pipelines.Factory.Interfaces;
-using PipeAndFIlter.Domain.Pipelines.Filter;
 using PipeAndFIlter.Domain.Pipelines.Filter.Interfaces;
 using PipeAndFIlter.Domain.Pipelines.Interfaces;
 using System;
